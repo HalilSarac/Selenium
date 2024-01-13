@@ -19,10 +19,9 @@ public class C02_RelativeLocators {
 
         //1 ) https://testotomasyonu.com/relativeLocators adresine gidin
         driver.get("https://testotomasyonu.com/relativeLocators");
-        //2 ) DSLR Camera’yi  etrafindaki elementleri kullanarak
-        //    3 farkli relative locator ile locate edip tiklayin
 
-        // <img id="pic7_thumb" src="https://testotomasyonu.com/uploads/product/1688040635pexels-pixabay-274973-removebg-preview.png" alt="">
+        //2 ) DSLR Camera’yi  etrafindaki elementleri kullanarak 3 farkli relative locator ile locate edip tiklayin
+        //<img id="pic7_thumb" src="https://testotomasyonu.com/uploads/product/1688040635pexels-pixabay-274973-removebg-preview.png" alt="">
 
         WebElement appleKulaklik = driver.findElement(By.id("pic6_thumb"));
 
@@ -30,61 +29,60 @@ public class C02_RelativeLocators {
 
         //3 ) Acilan urunun DSLR Camera oldugunu test edin.
 
-
         // 1. relative locate islemi + click + test'i ayri ayri yapalim
-        WebElement dslrCamera1 =
-                driver.findElement(RelativeLocator.with(By.tagName("img")).toRightOf(appleKulaklik));
+        WebElement dslrCamera1 = driver.findElement(RelativeLocator.with(By.tagName("img")).toRightOf(appleKulaklik));
 
         dslrCamera1.click();
 
-        WebElement urunIsimElementi = driver.findElement(By.xpath(" //div[@class=' heading-sm mb-4']"));
+        WebElement urunIsimElementi = driver.findElement(By.xpath("//div[@class=' heading-sm mb-4']"));
 
         String expectedUrunIsmi = "DSLR Camera";
         String actualUrunIsmi = urunIsimElementi.getText();
 
         if (expectedUrunIsmi.equals(actualUrunIsmi)){
-            System.out.println("1.Relative locator testi PASSED");
-        }else System.out.println("1.Relative locator testi FAILED");
+            System.out.println("1.Relative Locater testi PASSED");
+        }else {
+            System.out.println("1.Relative Locater testi FAILED");
+        }
 
-        Thread.sleep(2000);
         // 2. relative locate islemi + click + test'i ayri ayri yapalim
         driver.get("https://testotomasyonu.com/relativeLocators");
         WebElement motorTelefon = driver.findElement(By.id("pic8_thumb"));
 
-        WebElement dslrCamera2 =
-                driver.findElement(RelativeLocator.with(By.id("pic7_thumb")).toLeftOf(motorTelefon));
+        WebElement dslrCamera2 = driver.findElement(RelativeLocator.with(By.id("pic7_thumb")).toLeftOf(motorTelefon));
 
         dslrCamera2.click();
 
         expectedUrunIsmi = "DSLR Camera";
-        urunIsimElementi = driver.findElement(By.xpath(" //div[@class=' heading-sm mb-4']"));
+        urunIsimElementi = driver.findElement(By.xpath("//div[@class=' heading-sm mb-4']"));
         actualUrunIsmi = urunIsimElementi.getText();
 
         if (expectedUrunIsmi.equals(actualUrunIsmi)){
-            System.out.println("2.Relative locator testi PASSED");
-        }else System.out.println("2.Relative locator testi FAILED");
+            System.out.println("2.Relative Locater testi PASSED");
+        }else {
+            System.out.println("2.Relative Locater testi FAILED");
+        }
 
         // 3. relative locate islemi + click + test'i ayri ayri yapalim
         driver.get("https://testotomasyonu.com/relativeLocators");
 
         WebElement batKulaklik = driver.findElement(By.id("pic2_thumb"));
 
-        WebElement dslrCamera3 =
-                driver.findElement(RelativeLocator.with(By.tagName("img")).below(batKulaklik));
+        WebElement dslrCamera3 = driver.findElement(RelativeLocator.with(By.tagName("img")).below(batKulaklik));
 
         dslrCamera3.click();
 
         expectedUrunIsmi = "DSLR Camera";
-
-        urunIsimElementi = driver.findElement(By.xpath(" //div[@class=' heading-sm mb-4']"));
+        urunIsimElementi = driver.findElement(By.xpath("//div[@class=' heading-sm mb-4']"));
         actualUrunIsmi = urunIsimElementi.getText();
 
         if (expectedUrunIsmi.equals(actualUrunIsmi)){
-            System.out.println("3.Relative locator testi PASSED");
-        }else System.out.println("3.Relative locator testi FAILED");
+            System.out.println("3.Relative Locater testi PASSED");
+        }else {
+            System.out.println("3.Relative Locater testi FAILED");
+        }
 
         Thread.sleep(3000);
         driver.quit();
-
     }
 }
